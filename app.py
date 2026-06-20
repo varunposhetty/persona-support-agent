@@ -1,36 +1,48 @@
 import streamlit as st
-from dotenv import load_dotenv
 from google import genai
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from src.persona_detector import detect_persona
 from src.escalation import should_escalate
-import os
 
-load_dotenv()
-
+# Gemini Client
 client = genai.Client(
-    api_key=os.getenv("GEMINI_API_KEY")
+    api_key=st.secrets["GEMINI_API_KEY"]
 )
 
+# Embedding Model
 embeddings = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
 
+# Load FAISS Vector Store
 vectorstore = FAISS.load_local(
     "vectorstore",
     embeddings,
     allow_dangerous_deserialization=True
 )
 
-st.title("🤖 Persona Adaptive Support Agent")
+# UI
+st.set_page_config(
+    page_title="Persona Adaptive Support Agent",
+    page_icon="🤖",
+    layout="wide"
+)
 
-query = st.text_input("Ask your support question:")
+st.title("🤖 Persona Adaptive Support Agent")
+st.write("Ask your support question:")
+
+query = st.text_input(
+    "",
+    placeholder="Enter your support issue..."
+)
 
 if query:
 
+    # Detect Persona
     persona = detect_persona(query)
 
+    # Retrieve Documents
     results = vectorstore.similarity_search(query, k=3)
 
     context = ""
@@ -47,16 +59,21 @@ Support Documents:
 Customer Question:
 {query}
 
+Response Style:
+
 Technical Expert:
-- Detailed explanation.
+- Detailed technical explanation.
+- Include troubleshooting steps.
 
 Frustrated User:
 - Empathetic response.
+- Reassure the customer.
 
 Business Executive:
-- Business impact focused.
+- Focus on business impact.
+- Mention timelines and risks.
 
-Only answer from the documents.
+Only answer using the support documents.
 """
 
     response = client.models.generate_content(
@@ -64,18 +81,18 @@ Only answer from the documents.
         contents=prompt
     )
 
-    st.write("### Detected Persona")
-    st.write(persona)
+    st.write("## Detected Persona")
+    st.success(persona)
 
-    st.write("### Retrieved Sources")
+    st.write("## Retrieved Sources")
 
     for doc in results:
-        st.write("•", doc.metadata["source"])
+        st.write(f"• {doc.metadata['source']}")
 
-    st.write("### Response")
+    st.write("## Response")
     st.write(response.text)
 
     if should_escalate(query, results):
-        st.error("Escalation Required")
+        st.error("⚠ Escalation Required")
     else:
-        st.success("No Escalation Required")
+        st.success("✅ No Escalation Required")
