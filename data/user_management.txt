@@ -1,0 +1,12 @@
+User Management Guide
+
+Administrators can manage users through the Admin Portal.
+
+Available actions:
+
+1. Create users.
+2. Disable user accounts.
+3. Assign roles and permissions.
+4. Reset user passwords.
+
+Changes may take up to 5 minutes to propagate across the system.

@@ -1,0 +1,10 @@
+Integration Setup Guide
+
+To integrate with our platform:
+
+1. Generate an API key from Developer Settings.
+2. Configure the API endpoint URL.
+3. Add authentication headers.
+4. Test connectivity using the health-check endpoint.
+
+If integration fails, review API logs and verify credentials.

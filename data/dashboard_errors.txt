@@ -1,0 +1,14 @@
+Dashboard Error Guide
+
+Common dashboard issues:
+
+1. Slow loading pages.
+2. Missing analytics data.
+3. Widget rendering failures.
+
+Troubleshooting:
+
+- Refresh the page.
+- Clear browser cache.
+- Verify internet connectivity.
+- Check platform status page for outages.

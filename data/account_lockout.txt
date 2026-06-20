@@ -1,0 +1,13 @@
+Account Lockout Guide
+
+Accounts may be locked due to:
+
+1. Multiple failed login attempts.
+2. Suspicious activity detection.
+3. Security policy violations.
+
+Resolution:
+
+- Wait 15 minutes before retrying.
+- Reset the password.
+- Contact support if the account remains locked.

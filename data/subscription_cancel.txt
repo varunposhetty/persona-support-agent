@@ -1,0 +1,12 @@
+Subscription Cancellation Guide
+
+Users can cancel subscriptions from the Account Settings page.
+
+Steps:
+
+1. Navigate to Account Settings.
+2. Select Subscription.
+3. Click Cancel Subscription.
+4. Confirm cancellation.
+
+The subscription remains active until the end of the current billing cycle.

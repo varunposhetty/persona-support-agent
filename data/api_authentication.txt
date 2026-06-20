@@ -1,0 +1,15 @@
+API Authentication Guide
+
+Common API authentication failures:
+
+1. Invalid API key.
+2. Expired API token.
+3. Missing Authorization header.
+4. Incorrect API endpoint.
+
+Troubleshooting:
+
+- Verify API credentials.
+- Regenerate API token if expired.
+- Check request headers.
+- Review API logs for error details.

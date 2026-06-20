@@ -1,0 +1,9 @@
+Billing Policy
+
+Customers are billed monthly.
+
+Refund requests are reviewed within 5 business days.
+
+Billing disputes require review by a human support representative.
+
+Subscription charges are non-refundable after the billing cycle starts.

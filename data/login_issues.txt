@@ -1,0 +1,9 @@
+Login Issues Guide
+
+If a user cannot log in:
+
+1. Verify username and password.
+2. Reset password if credentials are forgotten.
+3. Clear browser cache and cookies.
+4. Ensure account is not locked.
+5. Contact support if login still fails.
